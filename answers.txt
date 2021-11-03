@@ -16,20 +16,20 @@ Group members:
 
 insertion_sort on:
 
-- random inputs:      [Quadratic] [Linearithmic] [Linear]
-- 95% sorted inputs:  [Quadratic] [Linearithmic] [Linear]
-- sorted inputs:      [Quadratic] [Linearithmic] [Linear]
+- random inputs:      Quadratic
+- 95% sorted inputs:  Quadratic
+- sorted inputs:      Linear
 
 quick_sort on:
 
-- random inputs:      [Quadratic] [Linearithmic] [Linear]
-- 95% sorted inputs:  [Quadratic] [Linearithmic] [Linear]
-- sorted inputs:      [Quadratic] [Linearithmic] [Linear]
+- random inputs:      Linearithmic
+- 95% sorted inputs:  Linearithmic
+- sorted inputs:      Quadratic
 
 merge_sort on:
 
-- random inputs:      [Quadratic] [Linearithmic] [Linear]
-- 95% sorted inputs:  [Quadratic] [Linearithmic] [Linear]
+- random inputs:      Linearithmic
+- 95% sorted inputs:  Linearithmic
 - sorted inputs:      Linearithmic
 
 /******************************************************************************
