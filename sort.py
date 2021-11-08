@@ -1,6 +1,7 @@
 import random
 import array
 
+
 def insertion_sort(unsorted_array):
     """Sorts array using insertion sort. Not in-place."""
 
@@ -24,6 +25,7 @@ def insertion_sort(unsorted_array):
 
     return sorted_array
 
+
 def merge_sort(array):
     """Sorts array using merge sort."""
 
@@ -37,6 +39,7 @@ def merge_sort(array):
 
     # Recursively sort both parts and combine results
     return merge(merge_sort(first_half), merge_sort(second_half))
+
 
 def merge(array1, array2):
     """Merges two sorted lists into one."""
@@ -64,7 +67,8 @@ def merge(array1, array2):
 
     return result
 
-def quick_sort(array, cutoff = 0, use_median_of_three = False, shuffle_array = True):
+
+def quick_sort(array, cutoff=0, use_median_of_three=True, shuffle_array=False):
     """Sorts array using quicksort. Below array size 'cutoff',
     switches to insertion sort. If use_median_of_three is True, uses
     median of three for pivot selection. If shuffle_array is True,
@@ -75,13 +79,14 @@ def quick_sort(array, cutoff = 0, use_median_of_three = False, shuffle_array = T
 
     quick_sort_recursive(array, 0, len(array), cutoff, use_median_of_three)
 
+
 def quick_sort_recursive(array, lo, hi, cutoff, use_median_of_three):
     """Quicksorts the subarray array[lo:hi], i.e. elements
     array[lo] to array[hi-1], switching to insertion sort at the
     specified cutoff, and optionally using median-of-three."""
 
     # Base case
-    if hi <= lo+1: return
+    if hi <= lo + 1: return
 
     # TODO: check if the size of array[lo:hi] is below the cutoff
     # value, and switch to insertion sort if so. You can write
@@ -99,7 +104,8 @@ def quick_sort_recursive(array, lo, hi, cutoff, use_median_of_three):
     # Partition and then make two recursive calls
     mid = partition(array, lo, hi, use_median_of_three)
     quick_sort_recursive(array, lo, mid, cutoff, use_median_of_three)
-    quick_sort_recursive(array, mid+1, hi, cutoff, use_median_of_three)
+    quick_sort_recursive(array, mid + 1, hi, cutoff, use_median_of_three)
+
 
 def partition(array, lo, hi, use_median_of_three):
     """Partition the subarray array[lo:hi]. Returns the final index of
@@ -107,15 +113,8 @@ def partition(array, lo, hi, use_median_of_three):
     choose the pivot."""
 
     if use_median_of_three:
-        # TODO: try median of three. Find the median of the first, last
-        # and middle elements of array[lo:hi], and swap it with array[lo].
-        # Hint: use the function median_of_three defined below.
-        # Hint: array[lo:hi] selects all elements from array[lo]
-        # up to array[hi-1] (not array[hi]).
-        # Python hint: x//2 divides x by 2 and rounds down to the
-        # nearest integer.
-
-        raise NotImplementedError('use_median_of_three not implemented')
+        better_pivot = median_of_three(array, lo, hi-1, (lo + hi-1) // 2)
+        array[lo], array[better_pivot] = array[better_pivot], array[lo]
 
     # array[lo] is always used as the pivot.
     # Don't change this for median of three but swap the correct pivot
@@ -125,8 +124,8 @@ def partition(array, lo, hi, use_median_of_three):
     # i moves upwards in the array, j moves downwards.
     # Hence i starts at the first element after the pivot,
     # and j starts at the final element.
-    i = lo+1
-    j = hi-1
+    i = lo + 1
+    j = hi - 1
 
     # Continue until i and j cross
     while i <= j:
@@ -153,6 +152,7 @@ def partition(array, lo, hi, use_median_of_three):
 
     return j
 
+
 def median_of_three(array, i, j, k):
     """Return the index of the median element among array[i],
     array[j], and array[k]. (The median of a sequence of numbers
@@ -165,16 +165,16 @@ def median_of_three(array, i, j, k):
     y = array[j]
     z = array[k]
     if x <= y:
-        if y <= z: # x <= y <= z
+        if y <= z:  # x <= y <= z
             return j
         else:
-            if x <= z: # x <= z <= y
+            if x <= z:  # x <= z <= y
                 return k
-            else: # z <= x <= y
+            else:  # z <= x <= y
                 return i
-    elif x <= z: # y <= x <= z
+    elif x <= z:  # y <= x <= z
         return i
-    elif y <= z: # y <= z <= x
+    elif y <= z:  # y <= z <= x
         return k
-    else: # z <= y <= x
+    else:  # z <= y <= x
         return j
