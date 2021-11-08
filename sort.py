@@ -64,15 +64,14 @@ def merge(array1, array2):
 
     return result
 
-def quick_sort(array, cutoff = 0, use_median_of_three = False, shuffle_array = False):
+def quick_sort(array, cutoff = 0, use_median_of_three = False, shuffle_array = True):
     """Sorts array using quicksort. Below array size 'cutoff',
     switches to insertion sort. If use_median_of_three is True, uses
     median of three for pivot selection. If shuffle_array is True,
     shuffles the array before sorting."""
 
     if shuffle_array:
-        # TODO: Try using random.shuffle to shuffle the array before sorting
-        raise NotImplementedError('shuffle_array not implemented')
+        random.shuffle(array)
 
     quick_sort_recursive(array, 0, len(array), cutoff, use_median_of_three)
 
