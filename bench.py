@@ -23,7 +23,7 @@ def main():
     # You should try different cutoff values, and different
     # combinations of improvements!
     #
-    # execution_time_report("quick_sort, cutoff=5, shuffle, median of three",
+    #execution_time_report("quick_sort, cutoff=5, shuffle, median of three",
     #     sort.quick_sort, cutoff = 5, shuffle_array = True, use_median_of_three = True)
 
     execution_time_report("merge_sort", sort.merge_sort)

@@ -68,7 +68,7 @@ def merge(array1, array2):
     return result
 
 
-def quick_sort(array, cutoff=0, use_median_of_three=True, shuffle_array=False):
+def quick_sort(array, cutoff=45, use_median_of_three=False, shuffle_array=False):
     """Sorts array using quicksort. Below array size 'cutoff',
     switches to insertion sort. If use_median_of_three is True, uses
     median of three for pivot selection. If shuffle_array is True,
@@ -88,6 +88,11 @@ def quick_sort_recursive(array, lo, hi, cutoff, use_median_of_three):
     # Base case
     if hi <= lo + 1: return
 
+    if hi-lo <= cutoff:
+        x = insertion_sort(array[lo:hi])
+        array[lo:hi] = x
+
+
     # TODO: check if the size of array[lo:hi] is below the cutoff
     # value, and switch to insertion sort if so. You can write
     # array[lo:hi] to get the relevant part of the list to sort
@@ -102,9 +107,10 @@ def quick_sort_recursive(array, lo, hi, cutoff, use_median_of_three):
     # continuing with the quicksort!
 
     # Partition and then make two recursive calls
-    mid = partition(array, lo, hi, use_median_of_three)
-    quick_sort_recursive(array, lo, mid, cutoff, use_median_of_three)
-    quick_sort_recursive(array, mid + 1, hi, cutoff, use_median_of_three)
+    else:
+        mid = partition(array, lo, hi, use_median_of_three)
+        quick_sort_recursive(array, lo, mid, cutoff, use_median_of_three)
+        quick_sort_recursive(array, mid + 1, hi, cutoff, use_median_of_three)
 
 
 def partition(array, lo, hi, use_median_of_three):
