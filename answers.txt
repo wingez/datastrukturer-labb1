@@ -41,13 +41,14 @@ merge_sort on:
 ******************************************************************************/
 
 Shuffling the array first:
-[no] [yes+what changes]
+for sorted data the complexity was reduced from n**2 to n*log n
 
 Median-of-three pivot selection:
-[no] [yes+what changes]
+for sorted data the complexity was reduced from n**2 to n*log n
 
 Insertion sort for small subarrays:
-[no] [yes+what changes]
+for sorted data the complexity was reduced from n**2 to n*log n
+
 
 /******************************************************************************
 ** 3. What is a good cutoff to use for insertion sort?
@@ -55,13 +56,17 @@ Insertion sort for small subarrays:
 **    Remember that you should try to find the answer in a systematic way.
 ******************************************************************************/
 
-[...]
+From empirical testing we found ~45 was the best value on our machine
+We tuned on unsorted input
 
 /******************************************************************************
 ** 4. Which combination of improvements gives the best performance?
 ******************************************************************************/
 
-[...]
+We tried all combinations and found cutoff + median_off_three gave the best performance.
+We mostly tuned for unsorted input.
+
+Only cutoff gave the best performance on unsorted data but the worst-case on sorted data is still n**2 then
 
 /******************************************************************************
 ** Appendix: General information
@@ -69,16 +74,15 @@ Insertion sort for small subarrays:
 ** A. Approximately how many hours did you spend on the assignment?
 ******************************************************************************/
 
-[..group member..]:  [..hours..]
-[..group member..]:  [..hours..]
-[..group member..]:  [..hours..]
-
+Gustav       not to many, not to few, "lagom"
+Jonatan      not to many, not to few, "lagom"
+Dennis       not to many, not to few, "lagom"
 
 /******************************************************************************
 ** B. Are there any known bugs / limitations?
 ******************************************************************************/
 
-[...]
+There likely are, as the grader going to fail us on something. But we've found nothing so far
 
 /******************************************************************************
 ** C. Did you collaborate with any other students on this lab?
@@ -87,13 +91,14 @@ Insertion sort for small subarrays:
 **    may have used in creating your design.
 ******************************************************************************/
 
-[...]
+Nope
 
 /******************************************************************************
 ** D. Describe any serious problems you encountered.                    
 ******************************************************************************/
 
-[...]
+The execution-time varied by up to +-50% during consecutive runs. We tried averaging to circumvent this
+The problem was likely due to some battery-saving mode on our laptop
 
 /******************************************************************************
 ** E. List any other comments here.
@@ -101,4 +106,3 @@ Insertion sort for small subarrays:
 **    from doing the assignment, and whether you enjoyed it.                                             
 ******************************************************************************/
 
-[...]
